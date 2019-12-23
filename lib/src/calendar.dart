@@ -290,14 +290,16 @@ class _TableCalendarState extends State<TableCalendar>
 
   Future<bool> _confirmHorizontalSwipe(DismissDirection direction) async {
     if (direction == DismissDirection.endToStart) {
-      if (this
-          .widget
-          .calendarController
-          .visibleDays
-          .last
-          .add(Duration(days: 1))
-          .isAfter(this.widget.endDay)) {
-        return false;
+      if (this.widget.endDay != null) {
+        if (this
+            .widget
+            .calendarController
+            .visibleDays
+            .last
+            .add(Duration(days: 1))
+            .isAfter(this.widget.endDay)) {
+          return false;
+        }
       }
     }
     return true;
